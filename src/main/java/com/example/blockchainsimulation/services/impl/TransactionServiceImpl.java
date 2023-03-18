@@ -3,7 +3,12 @@ package com.example.blockchainsimulation.services.impl;
 import com.example.blockchainsimulation.domain.BlockInfoDto;
 import com.example.blockchainsimulation.domain.TransactionDto;
 import com.example.blockchainsimulation.services.TransactionService;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
+@Service
+@Transactional
 public class TransactionServiceImpl implements TransactionService {
 
     @Override

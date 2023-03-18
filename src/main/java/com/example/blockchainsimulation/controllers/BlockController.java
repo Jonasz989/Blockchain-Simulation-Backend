@@ -1,6 +1,8 @@
 package com.example.blockchainsimulation.controllers;
 
 import com.example.blockchainsimulation.domain.BlockDto;
+import com.example.blockchainsimulation.services.BlockService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +14,13 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/rest")
 public class BlockController {
+
+    private final BlockService blockService;
+
+    @Autowired
+    public BlockController(BlockService blockService) {
+        this.blockService = blockService;
+    }
 
     @GetMapping("/findByHash/{id}")
     public ResponseEntity<BlockDto> getByHash(@PathVariable String hashId) {
