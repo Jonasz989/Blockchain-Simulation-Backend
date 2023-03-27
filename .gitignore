@@ -22,3 +22,6 @@
 hs_err_pid*
 /.idea/
 /.idea/libraries/
+/.mvn/
+/Blockchain-Simulation.iml
+/.idea/
