@@ -1,1 +1,16 @@
+com\example\blockchainsimulation\domain\BlockInfoDto.class
+com\example\blockchainsimulation\domain\UserDto.class
+com\example\blockchainsimulation\persistence\exception\MapperException.class
+com\example\blockchainsimulation\controllers\TransactionController.class
+com\example\blockchainsimulation\services\TransactionService.class
+com\example\blockchainsimulation\services\impl\UserServiceImpl.class
 com\example\blockchainsimulation\BlockchainSimulationApplication.class
+com\example\blockchainsimulation\domain\mapper\Mapper.class
+com\example\blockchainsimulation\controllers\UserController.class
+com\example\blockchainsimulation\domain\TransactionDto.class
+com\example\blockchainsimulation\services\BlockService.class
+com\example\blockchainsimulation\services\impl\TransactionServiceImpl.class
+com\example\blockchainsimulation\controllers\BlockController.class
+com\example\blockchainsimulation\domain\BlockDto.class
+com\example\blockchainsimulation\services\impl\BlockServiceImpl.class
+com\example\blockchainsimulation\services\UserService.class
