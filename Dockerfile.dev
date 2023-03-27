@@ -1,0 +1,17 @@
+FROM 19-alpine-jdk:latest
+
+USER java_root
+
+RUN mkdir -p /home/java_root/app
+WORKDIR /home/java_root/app
+
+COPY --chown=java_root:java_root . /home/java_root/app
+RUN mvn compile
+RUN mvn package
+RUN mvn clean
+
+
+FROM postgres:9.6.5-alpine
+EXPOSE 5432
+
+
