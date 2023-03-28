@@ -7,9 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class BlockchainSimulationApplication {
 
 	public static void main(String[] args) {
-		System.out.println("Blockchain Simulation Backend is running...");
-		SpringApplication.run(BlockchainSimulationApplication.class, args);
+		//System.out.println("Blockchain Simulation Backend is running...");
 		
+		SpringApplication.run(BlockchainSimulationApplication.class, args);
+
 	}
 
 }

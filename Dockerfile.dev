@@ -1,4 +1,4 @@
-FROM 19-alpine-jdk:latest
+FROM 17-alpine-jdk:latest AS prebuild
 
 USER java_root
 
@@ -8,10 +8,17 @@ WORKDIR /home/java_root/app
 COPY --chown=java_root:java_root . /home/java_root/app
 RUN mvn compile
 RUN mvn package
-RUN mvn clean
 
 
-FROM postgres:9.6.5-alpine
-EXPOSE 5432
+FROM prebuild
 
+USER java_root
 
+RUN mkdir -p /home/java_root/app
+WORKDIR /home/java_root/app
+
+COPY --chown=java_root:java_root --from=prebuild /home/java_root/app/target/*.jar /home/java_root/app/app.jar
+
+EXPOSE 8080
+
+CMD ["java", "-jar", "app.jar"]
