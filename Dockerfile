@@ -22,4 +22,4 @@ COPY --chown=root:root --from=prebuild /home/root/app/target/*.jar /home/root/ap
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "app.jar"]
+CMD ["java", "-jar", "app.jar", "5432"]

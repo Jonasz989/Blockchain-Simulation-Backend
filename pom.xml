@@ -82,7 +82,6 @@
 				<configuration>
 					<createDependencyReducedPom>false</createDependencyReducedPom>
 					<transformers>
-
 					</transformers>
 					<properties>
 						<start-class>com.example.blockchainsimulation.BlockchainSimulationApplication</start-class>

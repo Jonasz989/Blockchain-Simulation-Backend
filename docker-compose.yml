@@ -1,7 +1,21 @@
 version: '1'
 services:
-  blockchainsimulation:
-    image: blockchainsimulation
+
+  database:
+    image: postgres:14.0
+    container_name: db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+
+  service:
+    image: bsimage:latest
+    container_name: blockchainsimulation
     build: .
     ports:
       - "8080:8080"
@@ -10,12 +24,10 @@ services:
     command: java -jar app.jar
     depends_on:
       - database
-
-  database:
-    image: postgres:14.0
-    ports:
-      - "5432:5432"
     environment:
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_DB: postgres
+        SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/postgres
+        SPRING_DATASOURCE_USERNAME: postgres
+        SPRING_DATASOURCE_PASSWORD: postgres
+        SPRING_DATASOURCE_NAME: postgres
+        SPRING_SQL_INIT_MODE: always
+
