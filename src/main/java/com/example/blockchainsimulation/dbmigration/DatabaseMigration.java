@@ -15,7 +15,7 @@ public class DatabaseMigration extends Flyway {
     public static Configuration configure(String url, String username, String password) {
         return new FluentConfiguration()
                 .dataSource(url, username, password)
-                .locations("classpath:dbscripts");
+                .locations("classpath:db/migration");
     }
 }
 
