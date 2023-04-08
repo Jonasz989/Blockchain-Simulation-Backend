@@ -1,7 +1,6 @@
 package com.example.blockchainsimulation.services;
 
-import com.example.blockchainsimulation.domain.UserDto;
-import org.apache.catalina.User;
+import com.example.blockchainsimulation.domain.user.UserDto;
 
 public interface UserService {
 

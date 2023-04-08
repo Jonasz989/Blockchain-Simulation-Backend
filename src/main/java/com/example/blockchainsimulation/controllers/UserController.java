@@ -1,6 +1,6 @@
 package com.example.blockchainsimulation.controllers;
 
-import com.example.blockchainsimulation.domain.UserDto;
+import com.example.blockchainsimulation.domain.user.UserDto;
 import com.example.blockchainsimulation.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

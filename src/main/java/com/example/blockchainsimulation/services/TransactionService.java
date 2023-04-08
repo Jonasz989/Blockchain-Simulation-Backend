@@ -1,7 +1,7 @@
 package com.example.blockchainsimulation.services;
 
-import com.example.blockchainsimulation.domain.BlockInfoDto;
-import com.example.blockchainsimulation.domain.TransactionDto;
+import com.example.blockchainsimulation.domain.block.Block;
+import com.example.blockchainsimulation.domain.transaction.TransactionDto;
 
 public interface TransactionService {
 
@@ -9,7 +9,7 @@ public interface TransactionService {
 
     Integer getTotalBalance();
 
-    BlockInfoDto getLastBlockInfo();
+    Block getLastBlockInfo();
 
     Integer getNumberOfTransactions();
 

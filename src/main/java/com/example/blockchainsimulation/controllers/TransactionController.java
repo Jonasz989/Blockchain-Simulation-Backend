@@ -1,7 +1,7 @@
 package com.example.blockchainsimulation.controllers;
 
-import com.example.blockchainsimulation.domain.BlockInfoDto;
-import com.example.blockchainsimulation.domain.TransactionDto;
+import com.example.blockchainsimulation.domain.block.Block;
+import com.example.blockchainsimulation.domain.transaction.TransactionDto;
 import com.example.blockchainsimulation.services.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -30,8 +30,8 @@ public class TransactionController {
     }
 
     @GetMapping
-    public ResponseEntity<BlockInfoDto> getLastBlockNumber() {
-        return ResponseEntity.ok().body(new BlockInfoDto());
+    public ResponseEntity<Block> getLastBlockNumber() {
+        return ResponseEntity.ok().body(new Block());
     }
 
     @GetMapping
