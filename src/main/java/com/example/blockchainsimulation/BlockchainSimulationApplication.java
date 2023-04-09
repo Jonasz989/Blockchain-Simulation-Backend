@@ -10,7 +10,7 @@ public class BlockchainSimulationApplication {
 	public static void main(String[] args) {
 		//System.out.println("Blockchain Simulation Backend is running...");
 
-		new DatabaseMigration(DatabaseMigration.configure("jdbc:postgresql://localhost:5432/postgres", "postgres", "postgres"));
+		new DatabaseMigration(DatabaseMigration.configure("jdbc:postgresql://host.docker.internal	:5432/postgres", "postgres", "postgres"));
 
 		SpringApplication.run(BlockchainSimulationApplication.class, args);
 
