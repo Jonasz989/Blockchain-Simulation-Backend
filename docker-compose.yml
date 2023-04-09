@@ -13,6 +13,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_DB: postgres
 
+
   blockchain:
     image: j0nasz989/bsimage:latest
     container_name: blockchainsimulation
@@ -21,7 +22,12 @@ services:
       - "8080:8080"
     volumes:
       - .:/app
-    command: java -jar app.jar
+    command: sh -c './wait-for-it.sh database:5432 && java -jar app.jar'
     depends_on:
       - database
-
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/postgres
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_DATASOURCE_NAME: postgres
+      SPRING_SQL_INIT_MODE: always
