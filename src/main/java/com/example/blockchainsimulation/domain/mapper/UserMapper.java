@@ -24,20 +24,10 @@ public class UserMapper {
         return userDto;
     }
     public static User mapOptionalUserDtoToUser(Optional<UserDto> userDto) {
-        User user = new User();
-        user.setUserUUID(userDto.get().getUserUUID());
-        user.setLogin(userDto.get().getLogin());
-        user.setPassword(userDto.get().getPassword());
-        user.setWalletUUID(userDto.get().getWalletUUID());
-        return user;
+        return mapUserDtoToUser(userDto.get());
     }
 
     public static UserDto mapOptionalUserToUserDto(Optional<User> user) {
-        UserDto userDto = new UserDto();
-        userDto.setUserUUID(user.get().getUserUUID());
-        userDto.setLogin(user.get().getLogin());
-        userDto.setPassword(user.get().getPassword());
-        userDto.setWalletUUID(user.get().getWalletUUID());
-        return userDto;
+        return mapUserToUserDto(user.get());
     }
 }
