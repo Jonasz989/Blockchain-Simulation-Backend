@@ -1,7 +1,7 @@
 package com.example.blockchainsimulation.services;
 
-import com.example.blockchainsimulation.domain.block.Block;
-import com.example.blockchainsimulation.domain.transaction.TransactionDto;
+import com.example.blockchainsimulation.domain.data.Block;
+import com.example.blockchainsimulation.domain.dto.TransactionDto;
 
 public interface TransactionService {
 

@@ -1,23 +1,23 @@
 package com.example.blockchainsimulation.controllers;
 
-import com.example.blockchainsimulation.domain.block.BlockDto;
+import com.example.blockchainsimulation.domain.dto.BlockDto;
 import com.example.blockchainsimulation.services.BlockService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/rest")
+@RequestMapping("/app/blockchain")
 public class BlockController {
 
     private final BlockService blockService;
 
-    @Autowired
+
     public BlockController(BlockService blockService) {
         this.blockService = blockService;
     }

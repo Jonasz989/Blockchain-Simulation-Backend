@@ -1,6 +1,6 @@
 package com.example.blockchainsimulation.services;
 
-import com.example.blockchainsimulation.domain.block.BlockDto;
+import com.example.blockchainsimulation.domain.dto.BlockDto;
 
 import java.util.UUID;
 

@@ -1,6 +1,5 @@
-package com.example.blockchainsimulation.domain.block;
+package com.example.blockchainsimulation.domain.data;
 
-import com.example.blockchainsimulation.domain.transaction.Transaction;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,7 +26,6 @@ public class Block {
     @NotNull
     @Size(min = 64, max = 64)
     private String blockHash;
-    @NotNull
-    @OneToMany(mappedBy = "transactions")
-    List<Transaction> transactionList = new ArrayList<>();
+//    @NotNull
+//    Transaction transaction = new Transaction();
 }

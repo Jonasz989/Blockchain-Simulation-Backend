@@ -1,6 +1,5 @@
-package com.example.blockchainsimulation.domain.user;
+package com.example.blockchainsimulation.domain.data;
 
-import com.example.blockchainsimulation.domain.wallet.Wallet;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,12 +15,13 @@ import javax.validation.constraints.Size;
 @Entity
 @Getter
 @Setter
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String userId;
+    private String userUUID;
     @NotNull
     @Size(min =1)
     private String login;

@@ -1,8 +1,9 @@
-package com.example.blockchainsimulation.domain.transaction;
+package com.example.blockchainsimulation.domain.data;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;

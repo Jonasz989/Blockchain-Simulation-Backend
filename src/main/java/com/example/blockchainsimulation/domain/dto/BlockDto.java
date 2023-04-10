@@ -1,6 +1,6 @@
-package com.example.blockchainsimulation.domain.block;
+package com.example.blockchainsimulation.domain.dto;
 
-import com.example.blockchainsimulation.domain.transaction.Transaction;
+import com.example.blockchainsimulation.domain.data.Transaction;
 import lombok.Getter;
 import lombok.Setter;
 
