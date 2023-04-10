@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RequestMapping("/app/blockchain/user/")
@@ -32,11 +34,15 @@ public class UserController {
     }
 
     @GetMapping("/showUserByName/{login}")
-    public ResponseEntity<UserDto> showUserByName(@PathVariable String login) {
-        Optional<User> user = userService.findUserByLogin(login);
-        UserDto userDto = UserMapper.mapOptionalUserToUserDto(user);
-        if(user.isPresent()){
-            return ResponseEntity.ok().body(userDto);
+    public ResponseEntity<List<UserDto>> showUserByName(@PathVariable String login) {
+        Optional<List<User>> users = userService.findUserByLogin(login);
+
+        if(users.isPresent()){
+            List<UserDto> userDtos = new ArrayList<>();
+            for(User user : users.get()){
+                userDtos.add(UserMapper.mapUserToUserDto(user));
+            }
+            return ResponseEntity.ok().body(userDtos);
         }
         else{
             return ResponseEntity.notFound().build();

@@ -8,6 +8,7 @@ import com.example.blockchainsimulation.repositories.UserRepository;
 import com.example.blockchainsimulation.services.UserService;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,13 +33,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> findUserByLogin(String login) {
+    public Optional<List<User>> findUserByLogin(String login) {
         Iterable<User> usersList = userRepository.findAll();
+        List<User> finalList = new ArrayList<>();
         for(User user : usersList) {
             if(user.getLogin().equals(login)){
-                return Optional.of(user);
+                finalList.add(user);
             }
         }
-        return Optional.empty();
+        if(finalList.isEmpty()) {
+            return Optional.empty();
+        }
+        return Optional.of(finalList);
     }
 }
