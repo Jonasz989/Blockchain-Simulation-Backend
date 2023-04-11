@@ -1,9 +1,6 @@
 package com.example.blockchainsimulation.domain.data;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
@@ -39,4 +36,11 @@ public class Transaction {
     @NotNull
     @Size(min = 1)
     private String sender;
+    @ManyToOne
+    @JoinColumn(name = "wallet_id")
+    private Wallet wallet;
+
+    @ManyToOne
+    @JoinColumn(name = "block_id")
+    private Block block;
 }

@@ -26,6 +26,9 @@ public class Block {
     @NotNull
     @Size(min = 64, max = 64)
     private String blockHash;
-//    @NotNull
-//    Transaction transaction = new Transaction();
+
+    @OneToMany
+    @JoinColumn(name = "block_id")
+    private List<Transaction> transactions = new ArrayList<>();
+
 }

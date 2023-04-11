@@ -31,4 +31,6 @@ public class User {
     @NotNull
     @Size(min = 36, max = 36, message = "Invalid wallet id")
     private String walletUUID;
+    @OneToOne(mappedBy = "walletUUID")
+    private Wallet wallet;
 }

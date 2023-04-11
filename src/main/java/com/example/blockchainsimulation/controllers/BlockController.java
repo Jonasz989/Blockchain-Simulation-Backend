@@ -1,5 +1,6 @@
 package com.example.blockchainsimulation.controllers;
 
+import com.example.blockchainsimulation.domain.data.Block;
 import com.example.blockchainsimulation.domain.dto.BlockDto;
 import com.example.blockchainsimulation.services.BlockService;
 import org.springframework.http.ResponseEntity;
@@ -7,9 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
-import java.util.UUID;
+import java.util.Optional;
+
+
+//zmienic get na find
 
 @RestController
 @RequestMapping("/app/blockchain")
@@ -24,19 +27,31 @@ public class BlockController {
 
     @GetMapping("/findByHash/{id}")
     public ResponseEntity<BlockDto> getByHash(@PathVariable String hashId) {
-        if (hashId.isBlank()) {
-            return ResponseEntity.badRequest().build();
+
+        Optional<BlockDto> blockDto = blockService.getBlockByHash(hashId);
+        if (blockDto.isPresent()) {
+            return ResponseEntity.ok(blockDto.get());
+        }else{
+            return ResponseEntity.notFound().build();
         }
 
-        return ResponseEntity.ok().body(new BlockDto());
     }
 
-    @GetMapping("/findByUUID/{uuid}")
-    public ResponseEntity<BlockDto> getByUUID(@PathVariable UUID uuid) {
-        if (uuid == null) {
-            return ResponseEntity.badRequest().build();
+//    @GetMapping("/findByUUID/{uuid}")
+//    public ResponseEntity<BlockDto> getByUUID(@PathVariable UUID uuid) {
+//        if (uuid == null) {
+//            return ResponseEntity.badRequest().build();
+//        }
+//
+//        return ResponseEntity.ok().body(new BlockDto());
+//    }
+    @GetMapping("/{lastBlockNumber}")
+    public ResponseEntity<Block> getLastBlockInfo(@PathVariable String lastBlockNumber) {
+        Optional<Block> block = blockService.getLastBlockInfo();
+        if (block.isPresent()) {
+            return ResponseEntity.ok(block.get());
+        }else {
+            return ResponseEntity.notFound().build();
         }
-
-        return ResponseEntity.ok().body(new BlockDto());
     }
 }

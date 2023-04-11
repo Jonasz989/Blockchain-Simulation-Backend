@@ -10,11 +10,8 @@ public interface TransactionService {
 
     Optional<Transaction> addTransaction(TransactionDto transactionDto);
 
-    Integer getTotalBalance();
 
-    Block getLastBlockInfo();
-
-    Integer getNumberOfTransactions();
+    Long getNumberOfTransactions();
 
     Integer getTransactionByWalletAddress(String address);
 
