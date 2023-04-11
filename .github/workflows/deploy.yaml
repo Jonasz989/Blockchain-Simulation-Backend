@@ -3,16 +3,7 @@ on:
   push:
     branches:
       - main
-  env:
-    AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    AWS_REGION: us-east-1
-    DOCKER_REGISTRY_USERNAME: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
-    DOCKER_REGISTRY_PASSWORD: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
-    DATABASE_URL: postgresql://postgres:postgres@db:5432/postgres
-    SPRING_DATASOURCE_URL: jdbc:postgresql://0.0.0.0:5432/postgres
-    SPRING_DATASOURCE_USERNAME: postgres
-    SPRING_DATASOURCE_PASSWORD: postgres
+      - develop_test
   jobs:
     build:
       runs-on: ubuntu-latest
@@ -24,17 +15,17 @@ on:
           with:
             context: .
             push: true
-            tags: your-docker-registry-url/your-docker-repo-name:latest
-            username: ${{ env.DOCKER_REGISTRY_USERNAME }}
-            password: ${{ env.DOCKER_REGISTRY_PASSWORD }}
+            tags: j0nasz989/bsimage:latest
+            username: ${{ secrets.DOCKER_USERNAME }}
+            password: ${{ secrets.DOCKER_PASSWORD }}
         - name: Deploy to Elastic Beanstalk
           uses: einaregilsson/beanstalk-deploy@v19
           with:
-            aws_access_key: ${{ env.AWS_ACCESS_KEY_ID }}
-            aws_secret_key: ${{ env.AWS_SECRET_ACCESS_KEY }}
-            application_name: your-elastic-beanstalk-application-name
-            environment_name: your-elastic-beanstalk-environment-name
-            version_label: your-version-label
-            region: ${{ env.AWS_REGION }}
-            deployment_package: your-docker-registry-url/your-docker-repo-name:latest
+            aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            application_name: CapgeminiBlockchain
+            environment_name: Capgeminiblockchain-env
+            version_label: 1.0
+            region: us-east-1
+            deployment_package: j0nasz989/bsimage:latest
             wait_for_deployment: true

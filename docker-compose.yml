@@ -22,7 +22,7 @@ services:
       - "8080:8080"
     volumes:
       - .:/app
-    command: sh -c './wait-for-it.sh database:5432 && java -jar app.jar'
+    command: sh -c './wait-for-it.sh database:5432 -t 60 && java -jar app.jar'
     depends_on:
       - database
     environment:

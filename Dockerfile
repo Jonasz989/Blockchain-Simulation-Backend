@@ -9,7 +9,6 @@ WORKDIR /home/root/app
 
 COPY --chown=root:root . /home/root/app
 
-RUN mvn compile
 RUN mvn package
 
 

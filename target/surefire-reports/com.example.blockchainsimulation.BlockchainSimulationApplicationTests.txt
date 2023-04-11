@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.example.blockchainsimulation.BlockchainSimulationApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.457 s - in com.example.blockchainsimulation.BlockchainSimulationApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.482 s - in com.example.blockchainsimulation.BlockchainSimulationApplicationTests
