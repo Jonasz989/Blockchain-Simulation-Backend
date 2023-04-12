@@ -31,4 +31,5 @@ jobs:
           environment_name: Capgeminiblockchain-env
           version_label: 1.0
           region: us-east-1
+          deployment_package: deploy.zip
           wait_for_deployment: true
