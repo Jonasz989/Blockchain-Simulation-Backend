@@ -12,6 +12,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
@@ -20,8 +21,10 @@ jobs:
           tags: j0nasz989/bsimage:latest
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+
       - name: Generate deployment package
         run: zip -r deploy.zip . -x '*.git*'
+
       - name: Deploy to Elastic Beanstalk
         uses: einaregilsson/beanstalk-deploy@v21
         with:
@@ -29,7 +32,7 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: CapgeminiBlockchain
           environment_name: Capgeminiblockchain-env-1
-          version_label: ${{ github.sha }}
+          version_label: 1
           region: us-east-1
           deployment_package: deploy.zip
           wait_for_deployment: true
