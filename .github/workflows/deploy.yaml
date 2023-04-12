@@ -29,5 +29,5 @@ jobs:
           environment_name: Capgeminiblockchain-env
           version_label: 1.0
           region: us-east-1
-          deployment_package: j0nasz989/bsimage:latest
+          deployment_package: Blockchain-Simulation-Backend.zip
           wait_for_deployment: true
