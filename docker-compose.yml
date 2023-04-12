@@ -2,29 +2,22 @@ version: '1'
 services:
 
   database:
-    image: postgres:15.2
-    container_name: db_prod
+    image: "postgres:15.2"
+    mem_limit: 128m
+    hostname: database
     ports:
       - "5432:5432"
-    volumes:
-      - ./data:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
       POSTGRES_DB: postgres
-
-
   blockchain:
-    image: j0nasz989/bsimage:latest
-    container_name: blockchainsimulation
-    build: .
+    mem_limit: 128m
+    image: "j0nasz989/bsimage:latest"
+    hostname: blockchain
     ports:
       - "8080:8080"
-    volumes:
-      - .:/app
     command: sh -c './wait-for-it.sh database:5432 -t 60 && java -jar app.jar'
-    depends_on:
-      - database
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/postgres
       SPRING_DATASOURCE_USERNAME: postgres
