@@ -18,7 +18,7 @@ services:
     hostname: blockchain
     ports:
       - "8081:8080"
-    command: sh -c './wait-for-it.sh database:5432 -t 60 && java -jar app.jar'
+    command: ./wait-for-it.sh database:5432 -t 60 && java -jar app.jar
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/postgres
       SPRING_DATASOURCE_USERNAME: postgres
