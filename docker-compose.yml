@@ -25,6 +25,8 @@ services:
       SPRING_DATASOURCE_PASSWORD: postgres
       SPRING_DATASOURCE_NAME: postgres
       SPRING_SQL_INIT_MODE: always
+    labels:
+        - "traefik.http.routers.blockchain-current.rule=Host(`api.localhost`)"
   traefik:
     mem_limit: 128m
     image: "traefik:2.9"

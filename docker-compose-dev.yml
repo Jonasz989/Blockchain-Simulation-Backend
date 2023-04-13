@@ -14,12 +14,13 @@ services:
       POSTGRES_DB: postgres
 
 
+
   blockchain:
-    image: j0nasz989/bsimage:latest
+    image: j0nasz989/bsimage:3.0.0
     container_name: blockchainsimulation
     build: .
     ports:
-      - "8081:8080"
+      - "8081:8081"
     volumes:
       - .:/app
     command: sh -c './wait-for-it.sh database:5432 -t 60 && java -jar app.jar'
@@ -31,6 +32,9 @@ services:
       SPRING_DATASOURCE_PASSWORD: postgres
       SPRING_DATASOURCE_NAME: postgres
       SPRING_SQL_INIT_MODE: always
+    labels:
+      - "traefik.http.routers.blockchain-blockchain-simulation-backend.rule=Host(`api.localhost`)"
+
 
   traefik:
     image: traefik:2.9
