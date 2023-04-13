@@ -26,7 +26,7 @@ services:
       SPRING_DATASOURCE_NAME: postgres
       SPRING_SQL_INIT_MODE: always
     labels:
-        - "traefik.http.routers.blockchain-current.rule=Host(`https://capgeminiblockchain-env.eba-edn2fgm5.us-east-1.elasticbeanstalk.com`)"
+        - "traefik.http.routers.blockchain-current.rule=Host(`capgeminiblockchain-env.eba-edn2fgm5.us-east-1.elasticbeanstalk.com`)"
   traefik:
     mem_limit: 128m
     image: "traefik:2.9"
