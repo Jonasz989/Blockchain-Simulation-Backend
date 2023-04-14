@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "transactions")
 @Getter
 @Setter
 public class Transaction {
@@ -36,11 +37,11 @@ public class Transaction {
     @NotNull
     @Size(min = 1)
     private String sender;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "wallet_id")
     private Wallet wallet;
 
-    @ManyToOne
-    @JoinColumn(name = "block_id")
-    private Block block;
+//    @ManyToOne
+//    @JoinColumn(name = "block_id")
+//    private Block block;
 }

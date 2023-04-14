@@ -10,7 +10,7 @@ import java.util.Optional;
 public class WalletMapper {
     public static Wallet mapWalletDtoToWallet(WalletDto walletDto) {
         Wallet wallet = new Wallet();
-        wallet.setUserId(walletDto.getUserId());
+        wallet.setUserUUID(walletDto.getUserId());
         wallet
                 .setUser(UserMapper
                         .mapUserDtoToUser(walletDto.getUserDto()));
@@ -21,7 +21,7 @@ public class WalletMapper {
 
     public static WalletDto mapWalletToWalletDto(Wallet wallet) {
         WalletDto walletDto = new WalletDto();
-        walletDto.setUserId(wallet.getUserId());
+        walletDto.setUserId(wallet.getUserUUID());
         walletDto
                 .setUserDto(
                         UserMapper.mapUserToUserDto(wallet.getUser()));

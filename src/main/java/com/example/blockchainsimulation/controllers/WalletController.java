@@ -7,9 +7,7 @@ import com.example.blockchainsimulation.domain.mapper.WalletMapper;
 import com.example.blockchainsimulation.repositories.TransactionRepository;
 import com.example.blockchainsimulation.services.WalletService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -26,6 +24,12 @@ public class WalletController {
         this.walletService = walletService;
         this.transactionRepository = transactionRepository;
     }
+    @PostMapping("createWallet")
+    public ResponseEntity<WalletDto> createWallet(@RequestBody WalletDto dto) {
+        Optional<WalletDto> walletDto = walletService.save(dto);
+        return ResponseEntity.ok().body(walletDto.get());
+    }
+
 
     @GetMapping("/findWallet/{uuid}")
     public ResponseEntity<WalletDto> findWalletByUUID(@PathVariable String uuid){

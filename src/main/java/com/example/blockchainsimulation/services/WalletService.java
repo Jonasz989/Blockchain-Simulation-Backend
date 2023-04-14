@@ -1,6 +1,7 @@
 package com.example.blockchainsimulation.services;
 
 import com.example.blockchainsimulation.domain.data.Wallet;
+import com.example.blockchainsimulation.domain.dto.WalletDto;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -11,4 +12,5 @@ public interface WalletService {
     Optional<Iterable<Wallet>> findAll();
 
     BigDecimal getTotalBalance();
+    Optional<WalletDto> save(WalletDto dto);
 }

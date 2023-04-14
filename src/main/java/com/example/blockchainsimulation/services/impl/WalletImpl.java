@@ -2,6 +2,8 @@ package com.example.blockchainsimulation.services.impl;
 
 import com.example.blockchainsimulation.domain.data.Transaction;
 import com.example.blockchainsimulation.domain.data.Wallet;
+import com.example.blockchainsimulation.domain.dto.WalletDto;
+import com.example.blockchainsimulation.domain.mapper.WalletMapper;
 import com.example.blockchainsimulation.repositories.WalletRepository;
 import com.example.blockchainsimulation.services.WalletService;
 import org.springframework.stereotype.Service;
@@ -51,5 +53,12 @@ public class WalletImpl implements WalletService {
             total = total.add(currentValue);
         }
         return total;
+    }
+    public Optional<WalletDto> save(WalletDto dto){
+        Optional<WalletDto> walletDto = Optional
+                .of(
+                        WalletMapper.mapWalletToWalletDto(walletRepository.save(WalletMapper.mapWalletDtoToWallet(dto))
+                        ));
+        return walletDto;
     }
 }

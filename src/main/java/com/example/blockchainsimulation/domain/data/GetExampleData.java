@@ -35,7 +35,7 @@ public class GetExampleData {
     public static Wallet createWallet(){
         Wallet wallet = new Wallet();
         wallet.setId(id);
-        wallet.setUserId(uuid.toString());
+        wallet.setUserUUID(uuid.toString());
         //wallet.setTransactionList(transactionList());
         return wallet;
     }

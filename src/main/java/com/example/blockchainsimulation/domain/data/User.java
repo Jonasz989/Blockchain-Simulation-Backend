@@ -20,7 +20,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @NotNull
     private String userUUID;
     @NotNull
     @Size(min =1)
@@ -31,6 +31,6 @@ public class User {
     @NotNull
     @Size(min = 36, max = 36, message = "Invalid wallet id")
     private String walletUUID;
-    @OneToOne(mappedBy = "walletUUID")
+    @OneToOne(mappedBy = "user")
     private Wallet wallet;
 }
