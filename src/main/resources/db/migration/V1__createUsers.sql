@@ -1,7 +1,7 @@
--- CREATE TABLE users
+-- CREATE TABLE clients
 -- (
 --     id       SERIAL PRIMARY KEY,
---     useruuid VARCHAR(255) NOT NULL,
+--     clientUUID VARCHAR(255) NOT NULL,
 --     login VARCHAR(255) NOT NULL,
 --     password VARCHAR(255) NOT NULL,
 --     walletUUID VARCHAR(128) NOT NULL,
