@@ -1,13 +1,12 @@
--- CREATE TABLE wallets
--- (
---     id bigint NOT NULL,
---     wallet_uuid            varchar(128)   NOT NULL,
---     user_id varchar(128)[] NOT NULL,
---     balance            int            NOT NULL,
---     PRIMARY KEY (address)
--- );
+CREATE TABLE wallets
+(
+    id         SERIAL PRIMARY KEY,
+    walletUUID VARCHAR(36) NOT NULL,
+    client_id  BIGINT REFERENCES clients (id),
+    clientUUID VARCHAR(36) NOT NULL
+);
 
--- insert into Wallet (id, wallet_uuid, user, user_id, listOfTransactions)
+-- insert into Wallet (id, wallet_uuid, client, user_id, listOfTransactions)
 -- values (1,'100', ,,ARRAY ['1', '2']),
 --        (2,'200', ,,ARRAY ['3', '4']),
 --        (3,'300', ,,ARRAY ['5', '6']),

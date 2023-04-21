@@ -1,12 +1,12 @@
--- CREATE TABLE users
--- (
---     id       SERIAL PRIMARY KEY,
---     useruuid VARCHAR(255) NOT NULL,
---     login VARCHAR(255) NOT NULL,
---     password VARCHAR(255) NOT NULL,
---     walletUUID VARCHAR(128) NOT NULL,
---     wallet_id VARCHAR(128) NOT NULL
--- );
+CREATE TABLE clients
+(
+    id         SERIAL PRIMARY KEY,
+    clientUUID VARCHAR(255) NOT NULL,
+    login      VARCHAR(255) NOT NULL,
+    password   VARCHAR(255) NOT NULL,
+    walletUUID VARCHAR(128) NOT NULL,
+    wallet_id  BIGINT REFERENCES wallets (id) ON DELETE CASCADE
+);
 --
 --
 -- INSERT INTO USERS (useruuid, login,password, walletUUID, wallet_id)

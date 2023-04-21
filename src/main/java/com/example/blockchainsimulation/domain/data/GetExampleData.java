@@ -1,5 +1,10 @@
 package com.example.blockchainsimulation.domain.data;
 
+import com.example.blockchainsimulation.block.data.Block;
+import com.example.blockchainsimulation.block.data.BlockHeader;
+import com.example.blockchainsimulation.client.data.Client;
+import com.example.blockchainsimulation.transaction.data.Transaction;
+import com.example.blockchainsimulation.wallet.data.Wallet;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,7 +26,7 @@ public class GetExampleData {
     private static LocalDateTime localDateTime = LocalDateTime.of(1997,07,22,00,00);
     private static BigDecimal value = BigDecimal.valueOf(1L);
     private static String receiver = "Damian";
-    private static String sender = "Stary";
+    private static String sender = "Tomasz";
     private static String username = "username";
     private static UUID walletUUID = UUID.fromString("55aa48f8-1270-467d-adfc-18b1a369ed95");
     private static String password = "password";
@@ -35,7 +40,7 @@ public class GetExampleData {
     public static Wallet createWallet(){
         Wallet wallet = new Wallet();
         wallet.setId(id);
-        wallet.setUserUUID(uuid.toString());
+        wallet.setClientUUID(uuid.toString());
         //wallet.setTransactionList(transactionList());
         return wallet;
     }
@@ -57,14 +62,14 @@ public class GetExampleData {
         transaction.setSender(sender);
         return transaction;
     }
-    public static User createUser(){
-        User user = new User();
-        user.setId(id);
-        user.setUserUUID(uuid.toString());
-        user.setLogin(username);
-        user.setWalletUUID(walletUUID.toString());
-        user.setPassword(password);
-        return user;
+    public static Client createUser(){
+        Client client = new Client();
+        client.setId(id);
+        client.setClientUUID(uuid.toString());
+        client.setLogin(username);
+        client.setWalletUUID(walletUUID.toString());
+        client.setPassword(password);
+        return client;
     }
     public static Block createBlock(){
         Block block = new Block();

@@ -1,15 +1,17 @@
--- -- CREATE TABLE transactions
--- -- (
--- --     id varchar(128)   NOT NULL,
--- --     name varchar(256) NOT NULL,
--- --     value          decimal(10, 2) NOT NULL,
--- --     time           timestamp      NOT NULL,
--- --     description varchar(255) NOT NULL,
--- --     receiver varchar(255) NOT NULL,
--- --     sender varchar(255) NOT NULL,
--- --     wallet varchar(255) NOT NULL,
--- --     PRIMARY KEY (id)
--- -- );
+CREATE TABLE transactions
+(
+    id          SERIAL PRIMARY KEY,
+    name        VARCHAR(255)   NOT NULL,
+    value       DECIMAL(18, 2) NOT NULL,
+    date        TIMESTAMP      NOT NULL,
+    description VARCHAR(255)   NOT NULL,
+    receiver    VARCHAR(255)   NOT NULL,
+    sender      VARCHAR(255)   NOT NULL,
+    wallet_id   BIGINT         NOT NULL,
+    block_id    BIGINT,
+    FOREIGN KEY (wallet_id) REFERENCES wallets (id),
+    FOREIGN KEY (block_id) REFERENCES blocks (id)
+);
 --
 --
 -- INSERT INTO transactions (id, name, value, time, description, receiver, sender, wallet)
