@@ -1,24 +1,12 @@
 services:
 
-  database:
-    image: "postgres:15.2"
-    mem_limit: 128m
-    hostname: database
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_DB: postgres
-    volumes:
-      - ./data:/var/lib/postgresql/data
   blockchain:
     mem_limit: 128m
     image: "j0nasz989/bsimage:latest"
     hostname: blockchain
     ports:
       - "8081:8081"
-    command: sh -c './wait-for-it.sh database:5432 -t 60 && java -jar app.jar'
+    command: java -jar app.jar'
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/postgres
       SPRING_DATASOURCE_USERNAME: postgres
@@ -26,7 +14,7 @@ services:
       SPRING_DATASOURCE_NAME: postgres
       SPRING_SQL_INIT_MODE: always
     labels:
-        - "traefik.http.routers.blockchain-current.rule=Host(`capgeminiblockchain-env.eba-edn2fgm5.us-east-1.elasticbeanstalk.com`)"
+        - "traefik.http.routers.blockchain-current.rule=Host(`blockchain-env.eba-ufasqxv2.us-east-1.elasticbeanstalk.com/`)"
   traefik:
     mem_limit: 128m
     image: "traefik:2.9"
