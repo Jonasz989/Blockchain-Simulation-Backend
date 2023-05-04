@@ -4,6 +4,9 @@ import com.example.blockchainsimulation.client.data.Client;
 import com.example.blockchainsimulation.client.data.ClientDto;
 import com.example.blockchainsimulation.client.mapper.ClientMapper;
 import com.example.blockchainsimulation.client.repository.ClientRepository;
+import com.example.blockchainsimulation.wallet.data.Wallet;
+import com.example.blockchainsimulation.wallet.repository.WalletRepository;
+import com.example.blockchainsimulation.wallet.service.WalletService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,15 +18,28 @@ import java.util.Optional;
 public class ClientServiceInterfaceImpl implements ClientServiceInterface {
 
     private final ClientRepository clientRepository;
+    private final WalletService walletService;
+    private final WalletRepository walletRepository;
 
-    public ClientServiceInterfaceImpl(ClientRepository clientRepository) {
+    public ClientServiceInterfaceImpl(ClientRepository clientRepository, WalletService walletService, WalletRepository walletRepository) {
         this.clientRepository = clientRepository;
+        this.walletService = walletService;
+        this.walletRepository = walletRepository;
     }
 
     @Override
     public Optional<Client> addClient(ClientDto clientDto) {
+
         Client client = ClientMapper.mapClientDtoToClient(clientDto);
+        Wallet wallet = walletService.createWallet(clientDto);
+
+        wallet.setClient(client);
+        client.setWallet(wallet);
+
         Optional<Client> savedClient = Optional.of(clientRepository.save(client));
+        Optional<Wallet> savedWallet = Optional.of(walletRepository.save(wallet));
+        savedClient.get().setWallet(savedWallet.get());
+
         if(savedClient.isPresent()){
             return savedClient;
         } else {

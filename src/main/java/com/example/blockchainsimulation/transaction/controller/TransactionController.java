@@ -20,6 +20,7 @@ public class TransactionController {
 
     @PostMapping("/addTransaction")
     public ResponseEntity<TransactionDto> addTransaction(@RequestBody TransactionDto transactionDto) {
+
         Optional<Transaction> optionalTransaction = transactionService.addTransaction(transactionDto);
         if(optionalTransaction.isPresent()) {
             return ResponseEntity.ok().body(transactionDto);

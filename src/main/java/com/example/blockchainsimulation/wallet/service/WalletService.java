@@ -1,5 +1,6 @@
 package com.example.blockchainsimulation.wallet.service;
 
+import com.example.blockchainsimulation.client.data.ClientDto;
 import com.example.blockchainsimulation.wallet.data.Wallet;
 import com.example.blockchainsimulation.wallet.data.WalletDto;
 
@@ -12,4 +13,5 @@ public interface WalletService {
 
     BigDecimal getTotalBalance();
     Optional<WalletDto> save(WalletDto dto);
+    Wallet createWallet(ClientDto dto);
 }

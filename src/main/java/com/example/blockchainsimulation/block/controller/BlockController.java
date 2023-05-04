@@ -16,7 +16,7 @@ import java.util.Optional;
 //zmienic get na find
 
 @RestController
-@RequestMapping("/app/blockchain")
+@RequestMapping("/app/blockchain/block")
 public class BlockController {
 
     private final BlockService blockService;
@@ -26,10 +26,11 @@ public class BlockController {
         this.blockService = blockService;
     }
 
-    @GetMapping("/findByHash/{id}")
+    @GetMapping("/findByHash/{hashId}")
     public ResponseEntity<BlockDto> getByHash(@PathVariable String hashId) {
 
         Optional<BlockDto> blockDto = blockService.getBlockByHash(hashId);
+
         if (blockDto.isPresent()) {
             return ResponseEntity.ok(blockDto.get());
         }else{
@@ -47,12 +48,13 @@ public class BlockController {
 //        return ResponseEntity.ok().body(new BlockDto());
 //    }
 
-    @GetMapping("/{lastBlockNumber}")
-    public ResponseEntity<Block> getLastBlockInfo(@PathVariable String lastBlockNumber) {
+    @GetMapping("/lastBlock")
+    public ResponseEntity<Block> getLastBlockInfo() {
         Optional<Block> block = blockService.getLastBlockInfo();
         if (block.isPresent()) {
             return ResponseEntity.ok(block.get());
         }else {
+            System.out.println("Didnt find last block");
             return ResponseEntity.notFound().build();
         }
     }

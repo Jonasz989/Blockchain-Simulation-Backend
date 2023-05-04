@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@RequestMapping("/app/blockchain/client/")
+@RequestMapping("/app/blockchain/client")
 @RestController
 public class ClientController {
 
@@ -32,7 +32,7 @@ public class ClientController {
         }
     }
 
-    @GetMapping("/showClientByName/{login}")
+    @GetMapping("/showClientByLogin/{login}")
     public ResponseEntity<List<ClientDto>> showClientByLogin(@PathVariable String login) {
         Optional<List<Client>> clients = userService.findClientByLogin(login);
 

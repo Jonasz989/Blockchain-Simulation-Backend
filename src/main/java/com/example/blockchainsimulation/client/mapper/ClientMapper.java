@@ -2,6 +2,8 @@ package com.example.blockchainsimulation.client.mapper;
 
 import com.example.blockchainsimulation.client.data.Client;
 import com.example.blockchainsimulation.client.data.ClientDto;
+import com.example.blockchainsimulation.wallet.data.Wallet;
+import com.example.blockchainsimulation.wallet.mapper.WalletMapper;
 
 import java.util.Optional;
 
@@ -13,6 +15,8 @@ public class ClientMapper {
         client.setLogin(clientDto.getLogin());
         client.setPassword(clientDto.getPassword());
         client.setWalletUUID(clientDto.getWalletUUID());
+
+
         return client;
     }
 
