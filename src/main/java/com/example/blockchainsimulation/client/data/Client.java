@@ -38,7 +38,7 @@ public class Client {
     @Size(min = 36, max = 36, message = "Invalid wallet id")
     private String walletUUID;
 
-    @OneToOne(mappedBy = "client")
+    @OneToOne(mappedBy = "client", cascade = CascadeType.ALL)
     @JoinColumn(name = "wallet_id")
     private Wallet wallet;
 
