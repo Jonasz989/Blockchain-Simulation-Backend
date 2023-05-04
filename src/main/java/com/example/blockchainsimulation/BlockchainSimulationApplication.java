@@ -1,6 +1,6 @@
 package com.example.blockchainsimulation;
 
-import com.example.blockchainsimulation.dbmigration.DatabaseMigration;
+//import com.example.blockchainsimulation.dbmigration.DatabaseMigration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

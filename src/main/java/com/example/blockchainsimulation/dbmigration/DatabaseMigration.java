@@ -1,3 +1,4 @@
+/*
 package com.example.blockchainsimulation.dbmigration;
 
 import org.flywaydb.core.Flyway;
@@ -20,3 +21,4 @@ public class DatabaseMigration extends Flyway {
 }
 
 
+*/
