@@ -29,6 +29,9 @@ hs_err_pid*
 data/*.*
 /data
 
+dataForTesting/*.*
+/dataForTesting
+
 /target/
 
 # Default ignored files
@@ -41,3 +44,4 @@ data/*.*
 /dataSources.local.xml
 
 
+/dataForTesting/

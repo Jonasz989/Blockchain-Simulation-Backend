@@ -1,14 +1,50 @@
-version: '2.0'
+version: '1'
 services:
 
-  databasedev:
+  database:
     image: postgres:15.2
-    container_name: db_dev
+    container_name: db_prod
     ports:
       - "5432:5432"
     volumes:
-      - ./dataForTesting:/var/lib/postgresql/data
+      - ./data:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
       POSTGRES_DB: postgres
+
+
+
+  blockchain:
+    image: j0nasz989/bsimage:3.0.0
+    container_name: blockchainsimulation
+    build: .
+    ports:
+      - "8081:8081"
+    volumes:
+      - .:/app
+    command: sh -c './wait-for-it.sh database:5432 -t 60 && java -jar app.jar'
+    depends_on:
+      - database
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/postgres
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_DATASOURCE_NAME: postgres
+      SPRING_SQL_INIT_MODE: always
+    labels:
+      - "traefik.http.routers.blockchain-blockchain-simulation-backend.rule=Host(`api.localhost`)"
+
+
+  traefik:
+    image: traefik:2.9
+    container_name: traefik
+    command: --api.insecure=true --providers.docker
+    ports:
+        # The HTTP port
+        - "80:80"
+        # The Web UI (enabled by --api.insecure=true)
+        - "8080:8080"
+    volumes:
+        # So that Traefik can listen to the Docker events
+        - /var/run/docker.sock:/var/run/docker.sock
