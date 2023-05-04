@@ -11,9 +11,13 @@ import java.util.List;
 @Getter
 @Setter
 public class BlockDto {
+
     private LocalDateTime timeOfCreation;
+
     private Integer blockchainVersion;
+
     private String blockHash;
+
     private List<Transaction> transactionList = new ArrayList<>();
 
 }

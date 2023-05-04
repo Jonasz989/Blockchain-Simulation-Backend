@@ -3,6 +3,7 @@ package com.example.blockchainsimulation.block.controller;
 import com.example.blockchainsimulation.block.data.Block;
 import com.example.blockchainsimulation.block.data.BlockDto;
 import com.example.blockchainsimulation.block.service.BlockService;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -45,6 +46,7 @@ public class BlockController {
 //
 //        return ResponseEntity.ok().body(new BlockDto());
 //    }
+
     @GetMapping("/{lastBlockNumber}")
     public ResponseEntity<Block> getLastBlockInfo(@PathVariable String lastBlockNumber) {
         Optional<Block> block = blockService.getLastBlockInfo();

@@ -12,6 +12,7 @@ import java.util.Optional;
 
 @Service
 public class WalletImpl implements WalletService {
+
     private final WalletRepository walletRepository;
 
     public WalletImpl(WalletRepository walletRepository) {
@@ -52,6 +53,7 @@ public class WalletImpl implements WalletService {
         }
         return total;
     }
+
     public Optional<WalletDto> save(WalletDto dto){
         Optional<WalletDto> walletDto = Optional
                 .of(

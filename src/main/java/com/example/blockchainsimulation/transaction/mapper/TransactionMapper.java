@@ -6,6 +6,7 @@ import com.example.blockchainsimulation.transaction.data.TransactionDto;
 import java.util.Optional;
 
 public class TransactionMapper {
+
     public static Transaction mapTransactionDtoToTransaction(TransactionDto transactionDto){
 
         Transaction transaction = new Transaction();

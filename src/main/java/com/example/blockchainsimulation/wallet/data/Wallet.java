@@ -15,6 +15,7 @@ import java.util.List;
 @Getter
 @Setter
 public class Wallet {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,10 +24,13 @@ public class Wallet {
     @OneToOne()
     @JoinColumn(name = "client_id")
     private Client client;
+
     @Size(min = 36, max = 36, message = "Incorrect client uuid")
     private String clientUUID;
 
     @OneToMany(mappedBy = "wallet",fetch = FetchType.LAZY)
     private List<Transaction> transactionList = new ArrayList<Transaction>();
 
+    public Wallet() {
+    }
 }

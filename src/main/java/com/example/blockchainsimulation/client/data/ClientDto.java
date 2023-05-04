@@ -11,9 +11,13 @@ public class ClientDto {
     private String clientUUID;
 
     private String login;
+
     private String password;
+
     private String walletUUID;
+
     private WalletDto walletDto;
+
 
     @Override
     public String toString() {

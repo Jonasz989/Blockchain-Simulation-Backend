@@ -6,6 +6,7 @@ import com.example.blockchainsimulation.client.data.ClientDto;
 import java.util.Optional;
 
 public class ClientMapper {
+
     public static Client mapClientDtoToClient(ClientDto clientDto) {
         Client client = new Client();
         client.setClientUUID(clientDto.getClientUUID());
@@ -23,6 +24,7 @@ public class ClientMapper {
         clientDto.setWalletUUID(client.getWalletUUID());
         return clientDto;
     }
+
     public static Client mapOptionalUserDtoToUser(Optional<ClientDto> clientDto) {
         return mapClientDtoToClient(clientDto.get());
     }

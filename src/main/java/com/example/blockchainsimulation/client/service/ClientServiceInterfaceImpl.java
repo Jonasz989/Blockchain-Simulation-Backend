@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @Service
 public class ClientServiceInterfaceImpl implements ClientServiceInterface {
+
     private final ClientRepository clientRepository;
 
     public ClientServiceInterfaceImpl(ClientRepository clientRepository) {

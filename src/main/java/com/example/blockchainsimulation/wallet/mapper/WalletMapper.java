@@ -7,6 +7,7 @@ import com.example.blockchainsimulation.wallet.data.WalletDto;
 import java.util.Optional;
 
 public class WalletMapper {
+
     public static Wallet mapWalletDtoToWallet(WalletDto walletDto) {
         Wallet wallet = new Wallet();
         wallet.setClientUUID(walletDto.getClientId());

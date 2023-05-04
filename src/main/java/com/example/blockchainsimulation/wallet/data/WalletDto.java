@@ -13,7 +13,9 @@ import java.util.List;
 public class WalletDto {
 
     private String walletUUID;
+
     private ClientDto clientDto;
+
     private String clientId;
 
     private List<Transaction> transactions = new ArrayList<>();

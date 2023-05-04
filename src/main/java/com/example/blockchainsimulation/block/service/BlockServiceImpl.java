@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @Service
 public class BlockServiceImpl implements BlockService {
+
     private final BlockRepository blockRepository;
 
     public BlockServiceImpl(BlockRepository blockRepository) {
@@ -29,6 +30,7 @@ public class BlockServiceImpl implements BlockService {
             return Optional.empty();
         }
     }
+
     @Override
     public Optional<BlockDto> getBlockByHash(String hashId) {
 

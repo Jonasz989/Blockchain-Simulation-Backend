@@ -18,27 +18,35 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class Transaction {
+
     @Id
     @GeneratedValue
     private Long id;
+
     @NotNull
     @Size(min = 1)
     private String name;
+
     @NotNull
     @Min(0)
     private BigDecimal value;
+
     @Past
     @NotNull
     private LocalDateTime date;
+
     @NotNull
     @Size(min = 1)
     private String description;
+
     @NotNull
     @Size(min = 1)
     private String receiver;
+
     @NotNull
     @Size(min = 1)
     private String sender;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "wallet_id")
     private Wallet wallet;
@@ -46,4 +54,7 @@ public class Transaction {
     @ManyToOne
     @JoinColumn(name = "block_id")
     private Block block;
+
+    public Transaction() {
+    }
 }

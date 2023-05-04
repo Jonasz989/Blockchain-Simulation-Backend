@@ -17,33 +17,53 @@ import java.util.UUID;
 @Getter
 @Setter
 public class GetExampleData {
-    private static UUID uuid = UUID.fromString("e58ed763-928c-4155-bee9-fdbaaadc15f3");
-    private static String name = "Igor";
-    private static Wallet wallet = new Wallet();
-    private static Long id = 1L;
-    private static String description = "example description";
-    private static String transactionName = "first transaction";
-    private static LocalDateTime localDateTime = LocalDateTime.of(1997,07,22,00,00);
-    private static BigDecimal value = BigDecimal.valueOf(1L);
-    private static String receiver = "Damian";
-    private static String sender = "Tomasz";
-    private static String username = "username";
-    private static UUID walletUUID = UUID.fromString("55aa48f8-1270-467d-adfc-18b1a369ed95");
-    private static String password = "password";
-    private static String blockHash = "1085bd5a-e216-48bd-8b7e-84591996324e";
-    private static int blockchainVersion = 1;
-    private static int difficultyTarget = 5;
-    private static String merkleRoot = "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad";
-    private static int nonce = 34567;
-    private static String previousBlockHeaderHash = "0xd869185d9321dcd86c671d03777775f13c090bccd1487b7ef1f138957676ff17";
+
+    private static UUID UUID_EXAMPLE = UUID.fromString("e58ed763-928c-4155-bee9-fdbaaadc15f3");
+
+    private static String NAME = "Igor";
+
+    private static Wallet WALLET = new Wallet();
+
+    private static Long ID = 1L;
+    private static String DESCRIPTION = "example description";
+
+    private static String TRANSACTION_NAME = "first transaction";
+
+    private static LocalDateTime LOCAL_DATE_TIME = LocalDateTime.of(1997,07,22,00,00);
+
+    private static BigDecimal VALUE = BigDecimal.valueOf(1L);
+
+    private static String RECEIVER = "Damian";
+
+    private static String SENDER = "Tomasz";
+
+    private static String USERNAME = "username";
+
+    private static UUID WALLET_ID = UUID.fromString("55aa48f8-1270-467d-adfc-18b1a369ed95");
+
+    private static String PASSWORD = "password";
+
+    private static String BLOCK_HASH = "1085bd5a-e216-48bd-8b7e-84591996324e";
+
+    private static int BLOCKCHAIN_VERSION = 1;
+
+    private static int DIFFICULTY_TARGET = 5;
+
+    private static String MERKLE_ROOT = "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad";
+
+    private static int NONCE = 34567;
+
+    private static String PREVIOUS_BLOCK_HEADER_HASH = "0xd869185d9321dcd86c671d03777775f13c090bccd1487b7ef1f138957676ff17";
+
 
     public static Wallet createWallet(){
         Wallet wallet = new Wallet();
-        wallet.setId(id);
-        wallet.setClientUUID(uuid.toString());
+        wallet.setId(ID);
+        wallet.setClientUUID(UUID_EXAMPLE.toString());
         //wallet.setTransactionList(transactionList());
         return wallet;
     }
+
     public static List<Transaction> transactionList(){
         List<Transaction> list = new ArrayList<Transaction>();
         list.add(createTransaction());
@@ -51,42 +71,46 @@ public class GetExampleData {
         list.add(createTransaction());
         return list;
     }
+
     public static Transaction createTransaction(){
         Transaction transaction = new Transaction();
-        transaction.setId(id);
-        transaction.setDescription(description);
-        transaction.setName(transactionName);
-        transaction.setDate(localDateTime);
-        transaction.setValue(value);
-        transaction.setReceiver(receiver);
-        transaction.setSender(sender);
+        transaction.setId(ID);
+        transaction.setDescription(DESCRIPTION);
+        transaction.setName(TRANSACTION_NAME);
+        transaction.setDate(LOCAL_DATE_TIME);
+        transaction.setValue(VALUE);
+        transaction.setReceiver(RECEIVER);
+        transaction.setSender(SENDER);
         return transaction;
     }
+
     public static Client createUser(){
         Client client = new Client();
-        client.setId(id);
-        client.setClientUUID(uuid.toString());
-        client.setLogin(username);
-        client.setWalletUUID(walletUUID.toString());
-        client.setPassword(password);
+        client.setId(ID);
+        client.setClientUUID(UUID_EXAMPLE.toString());
+        client.setLogin(USERNAME);
+        client.setWalletUUID(WALLET_ID.toString());
+        client.setPassword(PASSWORD);
         return client;
     }
+
     public static Block createBlock(){
         Block block = new Block();
-        block.setId(id);
-        block.setBlockHash(blockHash);
+        block.setId(ID);
+        block.setBlockHash(BLOCK_HASH);
         //block.setTransactionList(transactionList());
-        block.setBlockChainVersion(blockchainVersion);
-        block.setTimeOfCreation(localDateTime);
+        block.setBlockChainVersion(BLOCKCHAIN_VERSION);
+        block.setTimeOfCreation(LOCAL_DATE_TIME);
         return block;
     }
+
     public static BlockHeader createBlockHeader(){
         BlockHeader blockHeader = new BlockHeader();
-        blockHeader.setLocalDateTime(localDateTime);
-        blockHeader.setDifficultyTarget(difficultyTarget);
-        blockHeader.setMerkleRoot(merkleRoot);
-        blockHeader.setNonce(nonce);
-        blockHeader.setPreviousBlockHeaderHash(previousBlockHeaderHash);
+        blockHeader.setLocalDateTime(LOCAL_DATE_TIME);
+        blockHeader.setDifficultyTarget(DIFFICULTY_TARGET);
+        blockHeader.setMerkleRoot(MERKLE_ROOT);
+        blockHeader.setNonce(NONCE);
+        blockHeader.setPreviousBlockHeaderHash(PREVIOUS_BLOCK_HEADER_HASH);
         return blockHeader;
     }
 }

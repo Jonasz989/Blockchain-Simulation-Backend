@@ -6,6 +6,7 @@ import com.example.blockchainsimulation.block.data.BlockDto;
 import java.util.Optional;
 
 public class BlockMapper {
+
     public static Block mapBlockDtoToBlock(BlockDto blockDto) {
 
         Block block = new Block();

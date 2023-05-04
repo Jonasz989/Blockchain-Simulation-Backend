@@ -9,10 +9,17 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class TransactionDto {
+
     private String name;
+
     private BigDecimal value;
+
     private String description;
+
     private LocalDateTime date;
+
     private String receiver;
+
     private String sender;
+
 }

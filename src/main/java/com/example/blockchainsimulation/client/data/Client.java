@@ -18,20 +18,30 @@ import javax.validation.constraints.Size;
 @Setter
 @Table(name = "clients")
 public class Client {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @NotNull
     private String clientUUID;
+
     @NotNull
     @Size(min =1)
     private String login;
+
     @NotNull
     @Size(min =1)
     private String password;
+
     @NotNull
     @Size(min = 36, max = 36, message = "Invalid wallet id")
     private String walletUUID;
+
     @OneToOne(mappedBy = "client")
+    @JoinColumn(name = "wallet_id")
     private Wallet wallet;
+
+    public Client() {
+    }
 }
