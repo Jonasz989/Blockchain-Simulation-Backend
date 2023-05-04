@@ -7,12 +7,6 @@ services:
     ports:
       - "8081:8081"
     command: java -jar app.jar'
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres.cnow9afpsle0.us-east-1.rds.amazonaws.com:5432/postgres
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: postgres
-      SPRING_DATASOURCE_NAME: postgres
-      SPRING_SQL_INIT_MODE: always
     labels:
         - "traefik.http.routers.blockchain-current.rule=Host(`blockchain-env.eba-ufasqxv2.us-east-1.elasticbeanstalk.com/`)"
   traefik:
