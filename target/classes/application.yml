@@ -12,7 +12,8 @@ spring:
             hibernate:
                 dialect:
                     org.hibernate.dialect.PostgreSQLDialect
-    flyway:
-        baseline-on-migrate: true
-server:
-    port: 8081
+
+        hibernate:
+            ddl-auto: create-drop
+#    flyway:
+#        baseline-on-migrate: true
