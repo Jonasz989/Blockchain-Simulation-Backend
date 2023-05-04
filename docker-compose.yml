@@ -6,7 +6,7 @@ services:
     hostname: blockchain
     ports:
       - "8081:8081"
-    command: java -jar app.jar'
+    command: java -jar app.jar
     labels:
         - "traefik.http.routers.blockchain-current.rule=Host(`blockchain-env.eba-ufasqxv2.us-east-1.elasticbeanstalk.com/`)"
   traefik:
