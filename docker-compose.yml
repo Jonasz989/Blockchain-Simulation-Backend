@@ -8,7 +8,7 @@ services:
       - "8081:8081"
     command: java -jar app.jar
     labels:
-        - "traefik.http.routers.blockchain_1.rule=Host(`blockchain-env.eba-ufasqxv2.us-east-1.elasticbeanstalk.com`)"
+        - "traefik.http.routers.blockchain_1.rule=Host(`blockchain-env.eba-ufasqxv2.us-east-1.elasticbeanstalk.com/`)"
   traefik:
     mem_limit: 128m
     image: "traefik:2.9"
