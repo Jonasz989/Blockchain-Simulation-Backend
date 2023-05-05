@@ -17,3 +17,5 @@ spring:
             ddl-auto: create-drop
 #    flyway:
 #        baseline-on-migrate: true
+server:
+    port: 8081
