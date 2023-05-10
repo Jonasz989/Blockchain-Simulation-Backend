@@ -4,7 +4,7 @@ services:
 
   databasedev:
     image: postgres:15.2
-    container_name: db_prod
+    container_name: db_dev
     ports:
       - "5432:5432"
     volumes:
@@ -15,16 +15,16 @@ services:
       POSTGRES_DB: postgres
 
   blockchain:
-    image: j0nasz989/bsimage:3.0.0
+    image: j0nasz989/bsimage:4.0.0
     container_name: blockchainsimulation
     build: .
     ports:
       - "8081:8081"
     volumes:
       - .:/app
-    command: sh -c './wait-for-it.sh database:5432 -t 60 && java -jar app.jar'
+    command: sh -c './wait-for-it.sh databasedev:5432 -t 60 && java -jar app.jar'
     depends_on:
-      - database
+      - databasedev
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/postgres
       SPRING_DATASOURCE_USERNAME: postgres
